@@ -1,29 +1,28 @@
 class Solution {
   public:
     void sort012(vector<int>& arr) {
-        int zero=0;
-        int one=0;
-        int two=0;
-        
-        for(int i=0;i<arr.size();i++){
-            if(arr[i]==0)zero++;
-            else if(arr[i]==1)one++;
-            else if(arr[i]==2)two++;
-        } 
-        for(int i=0;i<arr.size();i++){
-            if(zero){
-                arr[i]=0;
-                zero--;
-            }
-            else if(one){
-                arr[i]=1;
-                one--;
-            }
-            else if(two){
-                arr[i]=2;
-                two--;
-            }
-        }
-        
+        // code here
+        int l = 0;
+       int r = arr.size()-1;
+       int m = 0;
+       
+       while(r>=l && l<=r && m<=r){
+           
+           if(m<l)m=l;
+           else if(arr[m]==0){
+               swap(arr[m],arr[l]);
+               l++;
+           }
+           else if(arr[m]==2){
+               swap(arr[m],arr[r]);
+               r--;
+           }
+           else{
+               m++;
+           }
+       }
+       
+       return;
+       
     }
 };
